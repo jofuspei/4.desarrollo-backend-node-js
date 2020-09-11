@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').config();
+
 const readline = require('readline');
 
 const conn = require('./lib/connectMongoose');
@@ -16,7 +18,9 @@ conn.once('open', async () => {
     }
     await initProductos();
 
+    console.log('Carga finalizada');
     conn.close();
+    
   } catch (error) {
     console.log('Ha ocurrido un error', err);
     process.exit(1);

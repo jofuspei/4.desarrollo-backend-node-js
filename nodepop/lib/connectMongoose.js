@@ -11,9 +11,10 @@ mongoose.connection.on('error', err => {
   process.exit(1);
 });
 
-mongoose.connect('mongodb://localhost/nodepop', {
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 module.exports = mongoose.connection;
