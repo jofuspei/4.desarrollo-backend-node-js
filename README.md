@@ -7,7 +7,7 @@ Repositorio de la práctica del módulo de **desarrollo backend con node.js** qu
 <br />
 <h1 align="center">🤑 NODEPOP 🤑</h1>
 
-> Ejecutar los comandos desde la carpeta **nodepop**
+> Ejecutar los comandos desde la carpeta raíz del proyecto: **[nodepop](nodepop/)**
 
 ## Instalación de dependencias
 
@@ -20,7 +20,7 @@ Repositorio de la práctica del módulo de **desarrollo backend con node.js** qu
 ## Configuración de variables de entorno
 
 Quitar la extensión _.example_ del archivo _.env.example_ e indicar las rutas correctas.
-Obtendremos el archivo **.env** con las rutas que se utilizarán en el proyecto.
+El archivo **.env** se utilizará en el proyecto con las rutas indicadas.
 
 
 <br />
@@ -31,6 +31,8 @@ Para cargar la base de datos con datos iniciales lanzamos el siginete comnado:
 ```sh
   npm run initDB
 ```
+
+Los datos de los productos se encuentran en el archivo _productos.json_
 
 **¡CUIDADO!** Este comando lanza un script que borra el contenido de la base de datos antes de inicializarla.
 

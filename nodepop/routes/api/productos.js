@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const multer = require('multer');
 
 const Producto = require('../../models/Producto');
 
@@ -37,10 +38,7 @@ router.get('/', async function(req, res, next) {
       }
     }
     
-    const productosFiltrados = await Producto
-                                .find(filtro)
-                                .limit(limit)
-                                .skip(skip)
+    const productosFiltrados = await Producto.list(filtro, limit, skip);
 
     res.json({ "products": productosFiltrados });
   } catch (error) {
@@ -71,5 +69,21 @@ router.post('/add', async function(req, res, next) {
     next(error);
   }
 });
+
+// Subida de imágenes
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/images');
+  },
+  filename: function (req, file, cb) {
+    const myFilename = file.originalname;
+    cb(null, myFilename);
+  }
+})
+const upload = multer({ storage: storage });
+
+router.post('/upload', upload.single('image'), (req, res, next) => {
+  res.send('Upload completed successfully');
+})
 
 module.exports = router;

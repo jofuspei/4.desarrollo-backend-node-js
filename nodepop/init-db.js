@@ -9,6 +9,8 @@ const producto = require('./models/Producto');
 const Producto = require('./models/Producto');
 const { rejects } = require('assert');
 
+const productos = require('./productos.json');
+
 conn.once('open', async () => {
   try {
     const answer = await askUser('¿Inicializar la base de datos? ( si / \x1B[4mno\x1B[0m )');
@@ -34,12 +36,7 @@ async function initProductos() {
 
   // Cargado de documentos inicial
   console.log('Cargando productos...')
-  const result = await Producto.insertMany([
-    { name: 'Mini Cooper Diesel', selling: true, price: 8650,  tags: ['motor']},
-    { name: 'Macbook Pro 15', selling: false, price: 1200,  tags: ['work', 'lifestyle']},
-    { name: 'Bicicleta Time RXRS Ultime', selling: true, price: 3800,  tags: ['lifestyle']},
-    { name: 'Samsung Galaxy S20 128GB', selling: true, price: 750,  tags: ['mobile']}
-  ])
+  const result = await Producto.insertMany(productos.productos);
   console.log(result.length, 'productos añadidos');
 }
 
