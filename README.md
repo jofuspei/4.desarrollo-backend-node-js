@@ -71,6 +71,7 @@ GET /api/productos?**name**=Min&**selling**=true&**price**=1000-&**tag**=motor&*
       "name": "Mini Cooper Diesel",
       "selling": true,
       "price": 8650,
+      "image": "mini_cooper.jpeg",
       "__v": 0
       }
     ]
@@ -94,19 +95,38 @@ GET /api/productos/tags
 
 ### Creación de producto
 
+Párametros:
+  - tags
+  - name
+  - selling
+  - price
+  - image
+
 POST /api/productos/add
 
 ```json
   {
     "added": {
         "tags": [
-            "lifestyle",
             "mobile"
         ],
-        "_id": "5f5be0bfccd5dd15ba1b3448",
-        "name": "iPhone SE",
-        "selling": false,
+        "_id": "5f5e20b7aae71a380fb58f5d",
+        "name": "iPhone SE negro",
+        "selling": true,
+        "price": 235,
+        "image": "iphone_se.jpeg",
         "__v": 0
     }
   }
+```
+
+### Carga de imágenes
+
+POST /api/productos/upload
+
+Párametros:
+  - image
+
+```
+  Upload completed successfully
 ```
